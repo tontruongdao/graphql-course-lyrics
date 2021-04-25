@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
+import gql from 'graphql-tag'
 
 class SongList extends Component {
 
   render() {
     return (
-    <div>
+      <div>
       SongList
     </div>
     )
-  }
+  }  
 }
+
+const query = gql`
+  {
+    songs {
+      title
+    }
+  }
+  `
+console.log(query)
 
 export default SongList

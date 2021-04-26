@@ -5,10 +5,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+const cors = require('cors')
 
 const schema = require('./schema/schema');
 
 const app = express();
+
+app.use(cors())
 
 // Replace with your mongoLab URI
 const MONGO_URI = process.env.MONGO;
@@ -27,10 +30,5 @@ app.use('/graphql', graphqlHTTP({
   schema,
   graphiql: true
 }));
-
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpack = require('webpack');
-const webpackConfig = require('../webpack.config.js');
-app.use(webpackMiddleware(webpack(webpackConfig)));
 
 module.exports = app;

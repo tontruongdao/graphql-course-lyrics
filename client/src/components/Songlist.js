@@ -28,7 +28,6 @@ const SongList = () => {
       <p>
         {songs}
       </p>
-
     </div>
   );
 }

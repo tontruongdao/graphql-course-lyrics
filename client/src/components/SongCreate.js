@@ -26,7 +26,7 @@ const SongCreate = () => {
     <div>
       <h3>Create A New Song</h3>
       <form onSubmit={onSubmit}>
-        <label>Song Title: 5</label>
+        <label>Song Title: </label>
         <input 
           onChange={e => setSongtitle(e.target.value)}
           value={songtitle}

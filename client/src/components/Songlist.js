@@ -1,13 +1,8 @@
 import React from 'react'
-import { useQuery, gql } from '@apollo/client'
+import { useQuery, gql, useMutation } from '@apollo/client'
+import { SONGS } from './gqlHelpers'
 
-const SONGS = gql`
-  query {
-    songs {
-      title
-    }
-  }
-`;
+import Song from './Song'
 
 const SongList = () => {
   const { loading, error, data } = useQuery(SONGS);
@@ -19,15 +14,20 @@ const SongList = () => {
 
   const songs = data.songs.map((song) => {
     return (
-      <li key={song.title}>{song.title}</li>
+      <li key={song.title}>
+        <Song
+          title={song.title}
+          id={song.id}
+        />
+      </li>
     )
   })
 
   return (
     <div>
-      <p>
+      <ul>
         {songs}
-      </p>
+      </ul>
     </div>
   );
 }

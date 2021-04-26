@@ -28,14 +28,8 @@ const App = () => {
               <li>
                 <Link to="/songcreate">song create</Link>
               </li>
-              <li>
-                <Link to="/dashboard">dashboard</Link>
-              </li>
             </ul>
             <SongList/>
-          </Route>
-          <Route path="/dashboard">            
-            <div>Dashboard</div>
           </Route>
           <Route path="/songcreate">            
             <SongCreate/>

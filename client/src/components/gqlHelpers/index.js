@@ -4,6 +4,7 @@ export const SONGS = gql`
   query {
     songs {
       title
+      id
     }
   }
 `;
@@ -15,4 +16,12 @@ mutation AddSong($title: String!){
     title
   }
 }
+`
+
+export const DELETE_SONG = gql`
+  mutation DeleteSong ($id: ID) {
+    deleteSong(id: $id){
+      id
+    }
+  }
 `

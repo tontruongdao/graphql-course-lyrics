@@ -1,4 +1,4 @@
-import './App.css';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,8 +6,9 @@ import {
   Link
 } from "react-router-dom";
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import SongList from './components/SongList'
 import { ApolloProvider } from '@apollo/client/react';
+import SongList from './components/SongList';
+import SongCreate from './components/SongCreate';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -18,23 +19,28 @@ const client = new ApolloClient({
 const App = () => {
   return (
     <ApolloProvider client={client}>
+      
       <Router >
+        <Link to="/">Home</Link>
         <Switch>
           <Route exact path="/">
-            <Link to="/dashboard">dashboard</Link>
+            <ul>
+              <li>
+                <Link to="/songcreate">song create</Link>
+              </li>
+              <li>
+                <Link to="/dashboard">dashboard</Link>
+              </li>
+            </ul>
             <SongList/>
           </Route>
           <Route path="/dashboard">            
-            <Link to="/">Home</Link>
             <div>Dashboard</div>
           </Route>
+          <Route path="/songcreate">            
+            <SongCreate/>
+          </Route>
         </Switch>
-        {/* <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <SongList/>
-          </header>
-        </div> */}
       </Router>
     </ApolloProvider>
   );
